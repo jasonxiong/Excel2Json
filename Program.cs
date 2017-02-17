@@ -3,6 +3,9 @@ using System.IO;
 using System.Data;
 using System.Text;
 using Excel;
+using System.Runtime.Remoting.Contexts;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace excel2json
 {
@@ -58,6 +61,23 @@ namespace excel2json
             // 加载Excel文件
             DirectoryInfo excelFolder = new DirectoryInfo(excelPath);
 
+            //加载json格式的导出文件列表
+            string text = System.IO.File.ReadAllText(excelPath+ @"\FileList.json");
+            JsonReader reader = new JsonTextReader(new StringReader(text));
+
+            HashSet<String> FileListInfo = new HashSet<string> { };
+            while (reader.Read())
+            {
+                if (reader.TokenType.ToString().CompareTo("String") != 0)
+                {
+                    continue;
+                }
+
+                //文件列表，读取到列表中
+                FileListInfo.Add(reader.Value.ToString());
+            }
+
+            Console.WriteLine(5);
             //遍历文件
             foreach (FileInfo configFile in excelFolder.GetFiles())
             {
@@ -85,6 +105,11 @@ namespace excel2json
                     // 取得数据
                     for (int i = 0; i < book.Tables.Count; ++i)
                     {
+                        if(!FileListInfo.Contains(book.Tables[i].TableName))
+                        {
+                            continue;
+                        }
+
                         DataTable sheet = book.Tables[i];
                         if (sheet.Rows.Count <= 0)
                         {

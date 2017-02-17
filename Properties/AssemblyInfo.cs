@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("excel2json")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("http://blog.csdn.net/neil3d")]
+[assembly: AssemblyCompany("http://www.jxtech.com")]
 [assembly: AssemblyProduct("excel2json")]
-[assembly: AssemblyCopyright("Copyright © Neil Fang 2014")]
+[assembly: AssemblyCopyright("Copyright © jason xiong 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
