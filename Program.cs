@@ -77,7 +77,6 @@ namespace excel2json
                 FileListInfo.Add(reader.Value.ToString());
             }
 
-            Console.WriteLine(5);
             //遍历文件
             foreach (FileInfo configFile in excelFolder.GetFiles())
             {
