@@ -56,7 +56,7 @@ namespace excel2json
                     if (lowcase)    
                         fieldName = fieldName.ToLower();
 
-                    if (!string.IsNullOrEmpty(fieldName))
+                    if (!string.IsNullOrEmpty(fieldName) && !fieldName.Contains("Column"))
                         rowData[fieldName] = value;
                 }
 
